@@ -1,5 +1,6 @@
 package meta
 
+// thank you https://github.com/disposable/disposable-email-domains for the email list
 var ThrowawayDomains = map[string]bool {
 "qqmba122.top":true,
 "affebe1.xyz":true,
