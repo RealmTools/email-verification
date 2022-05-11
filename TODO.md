@@ -1,1 +1,0 @@
-- checkIsDisposable: leverage this repo for https://github.com/disposable/disposable / https://github.com/disposable/disposable-email-domains
