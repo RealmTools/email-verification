@@ -7,7 +7,15 @@ import (
 	"net"
 	"os"
 	"strings"
+
+	"github.com/RealmTools/email-verification/meta"
 )
+ 
+func checkIsDisposable(domain string) bool {
+	
+	return meta.ThrowAwayDomain[domain]
+}
+
 
 func main() {
 
@@ -24,6 +32,9 @@ func main() {
 }
 
 func checkDomain(domain string) {
+
+	isDisposable := checkIsDisposable(domain)
+
 
 	var hasMX, hasSPF, hasDMARC bool
 	var spfRecord, dmarcRecord string
@@ -65,5 +76,5 @@ func checkDomain(domain string) {
 		}
 	}
 
-	fmt.Printf("Domain Name: %v \nMX record found: %v \nSPF record found: %v \nSPF record content: %v \nDMARC found: %v \nDMARC content: %v", domain, hasMX, hasSPF, spfRecord, hasDMARC, dmarcRecord)
+	fmt.Printf("Domain Name: %v \nMX record found: %v \nSPF record found: %v \nSPF record content: %v \nDMARC found: %v \nDMARC content: %v\nis disposable email: %v\n", domain, hasMX, hasSPF, spfRecord, hasDMARC, dmarcRecord, isDisposable)
 }
