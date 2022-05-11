@@ -7,13 +7,11 @@ import (
 	"net"
 	"os"
 	"strings"
-
-	"github.com/RealmTools/email-verification/meta"
 )
  
 func checkIsDisposable(domain string) bool {
 	
-	return meta.ThrowAwayDomain[domain]
+	return false
 }
 
 
