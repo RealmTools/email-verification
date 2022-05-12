@@ -1,0 +1,1 @@
+- GenerateRandomEmail generates a random email address using the domain passed. Used primarily for checking the existence of a catch-all address
