@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/RealmTools/email-verification/meta"
+	"github.com/RealmTools/emailVerification/meta"
 )
 
 
