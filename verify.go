@@ -51,12 +51,13 @@ func checkIsDisposable(domain string) bool {
 	return meta.ThrowawayDomains[domain]
 }
 
+type Response struct {
+	Email string `json:"email"`
+}
 
-
-func Verify(email string) {
-
-
-
+// retrieves email and dns information
+func Verify(email string) (Response, error) {
+ 
 	email_information := parseEmail(email)
 	
 	if email_information.Valid == false {
@@ -111,4 +112,5 @@ func Verify(email string) {
 	}
 
 	fmt.Printf("Domain Name: %v \nMX record found: %v \nSPF record found: %v \nSPF record content: %v \nDMARC found: %v \nDMARC content: %v\nis disposable domain: %v\n----", domain, hasMX, hasSPF, spfRecord, hasDMARC, dmarcRecord, isDisposable)
+	return Response{Email: email}, nil
 }
