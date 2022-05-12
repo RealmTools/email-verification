@@ -110,5 +110,5 @@ func Verify(email string) {
 		}
 	}
 
-	fmt.Printf("Domain Name: %v \nMX record found: %v \nSPF record found: %v \nSPF record content: %v \nDMARC found: %v \nDMARC content: %v\nis disposable domain: %v\n", domain, hasMX, hasSPF, spfRecord, hasDMARC, dmarcRecord, isDisposable)
+	fmt.Printf("Domain Name: %v \nMX record found: %v \nSPF record found: %v \nSPF record content: %v \nDMARC found: %v \nDMARC content: %v\nis disposable domain: %v\n...", domain, hasMX, hasSPF, spfRecord, hasDMARC, dmarcRecord, isDisposable)
 }
