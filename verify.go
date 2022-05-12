@@ -1,7 +1,7 @@
 package emailVerification
 
 import (
-	"fmt"
+	"errors"
 	"log"
 	"net"
 	"regexp"
@@ -53,7 +53,15 @@ func checkIsDisposable(domain string) bool {
 
 type Response struct {
 	Email string `json:"email"`
+	Domain string `json:"domain"`
+	MXRecordFound bool `json:"mxRecordFound"`
+	SPFRecordFound bool `json:"spfRecordFound"`
+	SPFRecordContent string `json:"spfRecordContent"`
+	DMARCRecordFound bool `json:"dmarcRecordFound"`
+	DMARCRecordContent string `json:"dmarcRecordContent"`
+	IsThrowawayEmail bool `json:"isThrowAwayEmail"`
 }
+
 
 // retrieves email and dns information
 func Verify(email string) (Response, error) {
@@ -61,7 +69,7 @@ func Verify(email string) (Response, error) {
 	email_information := parseEmail(email)
 	
 	if email_information.Valid == false {
-		log.Fatal("Error: email is invalid\n")
+		return Response{}, errors.New("Error: email is invalid")
 	}
 
 	domain := email_information.Domain
@@ -110,7 +118,6 @@ func Verify(email string) (Response, error) {
 			break
 		}
 	}
-
-	fmt.Printf("Domain Name: %v \nMX record found: %v \nSPF record found: %v \nSPF record content: %v \nDMARC found: %v \nDMARC content: %v\nis disposable domain: %v\n----", domain, hasMX, hasSPF, spfRecord, hasDMARC, dmarcRecord, isDisposable)
-	return Response{Email: email}, nil
+	return Response{Email: email, Domain: domain, MXRecordFound: hasMX, SPFRecordFound: hasSPF, SPFRecordContent: spfRecord, DMARCRecordFound: hasDMARC, DMARCRecordContent: dmarcRecord, IsThrowawayEmail: isDisposable}, nil
 }
+ 
