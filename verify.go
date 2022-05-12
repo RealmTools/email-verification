@@ -1,4 +1,4 @@
-package main
+package verify
 
 import (
 	"fmt"
@@ -53,21 +53,19 @@ func checkIsDisposable(domain string) bool {
 
 
 
-func main() {
+func Verify(email string) {
 
-	var tempEmail = "contact@realmtools.com"
-	email_information := parseEmail(tempEmail)
+
+
+	email_information := parseEmail(email)
 	
 	if email_information.Valid == false {
 		log.Fatal("Error: email is invalid\n")
 	}
 
-	checkDomain(email_information.Domain)
-}
+	domain := email_information.Domain
 
-
-
-func checkDomain(domain string) {
+ 
 
 	isDisposable := checkIsDisposable(domain)
 
