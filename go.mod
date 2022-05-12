@@ -1,3 +1,3 @@
-module github.com/RealmTools/email-verification
+module github.com/RealmTools/emailVerification
 
 go 1.18
