@@ -4,7 +4,7 @@ A email verification tool
 
 ### Start Local Instance
 
-Install Taskfile on your machine, then from terminal run: `task run`
+Install Taskfile on your machine, then from terminal run: `task dev`
 
 ### Operating System Tools Needed
 
@@ -17,7 +17,3 @@ Install Taskfile on your machine, then from terminal run: `task run`
 `git tag v0.1.0`
 
 `git push origin v0.1.0`
-
-### Run locally
-
-`go run internal/main.go`
