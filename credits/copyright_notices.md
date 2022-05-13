@@ -7,3 +7,10 @@ Domain list provided by [disposable](https://github.com/disposable/disposable-em
 - MIT License
 - Copyright (c) 2017 Andrei Simionescu
 - Copyright (c) 2017 Stefan Meinecke, greenSec GmbH
+
+## Package emailVerification.newSMTPClient
+
+Create smtp connection code reference
+
+- MIT License
+- Copyright (c) 2020 AfterShip

@@ -11,6 +11,8 @@ import (
 )
 
 
+
+
 type EmailInformation struct {
 	Username string `json:"username"`
 	Domain   string `json:"domain"`
@@ -73,9 +75,7 @@ func Verify(email string) (Response, error) {
 	}
 
 	domain := email_information.Domain
-
- 
-
+	
 	isDisposable := checkIsDisposable(domain)
 
 
@@ -85,7 +85,7 @@ func Verify(email string) (Response, error) {
 	mxRecords, err := net.LookupMX(domain)
 
 	if err != nil {
-		log.Printf("Error: %v\n", err)
+		log.Printf("Error mx: %v\n", err)
 	}
 
 	if len(mxRecords) > 0 {
@@ -95,7 +95,7 @@ func Verify(email string) (Response, error) {
 	txtRecords, err := net.LookupTXT(domain)
 
 	if err != nil {
-		log.Printf("Error:%v\n", err)
+		log.Printf("Error txt: %v\n", err)
 	}
 
 	for _, record := range txtRecords {
@@ -108,7 +108,7 @@ func Verify(email string) (Response, error) {
 
 	dmarcRecords, err := net.LookupTXT("_dmarc." + domain)
 	if err != nil {
-		log.Printf("ErrorL%v\n", err)
+		log.Printf("Error dmarc: %v\n", err)
 	}
 
 	for _, record := range dmarcRecords {
