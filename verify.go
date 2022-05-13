@@ -70,7 +70,7 @@ func Verify(email string) (Response, error) {
  
 	email_information := parseEmail(email)
 	
-	if email_information.Valid == false {
+	if !email_information.Valid {
 		return Response{}, errors.New("Error: email is invalid")
 	}
 
