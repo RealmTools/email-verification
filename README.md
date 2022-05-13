@@ -1,19 +1,32 @@
 ### About
 
-A email verification tool
+A email verification utility
 
-### Start Local Instance
+### Install
 
-Install Taskfile on your machine, then from terminal run: `task dev`
+```sh
+go get -u github.com/RealmTools/emailVerification
+```
 
-### Operating System Tools Needed
+### Example
 
-- Go 1.18
-- [Docker & Docker Compose](https://docs.docker.com/get-docker/)
-- [Taskfile](https://taskfile.dev/#/installation)
+```go
+func main() {
+    response, err := emailVerification.Verify("contact@realmtools.com")
+}
+```
 
-### How to version
+#### Function response
 
-`git tag v0.1.0`
-
-`git push origin v0.1.0`
+```json
+{
+  "email": "contact@realmtools.com",
+  "domain": "realmtools.com",
+  "mxRecordFound": true,
+  "spfRecordFound": true,
+  "spfRecordContent": "v=spf1 include:_spf.mx.cloudflare.net ~all",
+  "dmarcRecordFound": false,
+  "dmarcRecordContent": "",
+  "isThrowAwayEmail": false
+}
+```
